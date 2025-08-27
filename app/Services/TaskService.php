@@ -33,4 +33,10 @@ class TaskService
     {
         $task->delete();
     }
+
+    public function toggle(Task $task): void
+    {
+        $task->done = !$task->done;
+        $task->save();
+    }
 }

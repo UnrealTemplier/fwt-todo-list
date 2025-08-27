@@ -10,8 +10,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 
     Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])
-         ->can('delete', 'task')
+         ->can('edit', 'task')
          ->name('tasks.destroy');
+
+    Route::post('/tasks/{task}/toggle', [TaskController::class, 'toggle'])
+         ->can('edit', 'task')
+         ->name('tasks.toggle');
 });
 
 Route::middleware('auth')->group(function () {

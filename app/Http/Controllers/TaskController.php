@@ -36,4 +36,10 @@ class TaskController extends Controller
         $this->taskService->remove($task);
         return to_route('index');
     }
+
+    public function toggle(Task $task): RedirectResponse
+    {
+        $this->taskService->toggle($task);
+        return to_route('index');
+    }
 }
