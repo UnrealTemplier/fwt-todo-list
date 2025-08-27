@@ -9,7 +9,7 @@
 
                     <div>
                         <x-input-label for="content" :value="__('Task\'s content')"/>
-                        <x-text-input id="content" name="content" class="block mt-1 w-full" :value="old('email')" required autofocus/>
+                        <x-text-input id="content" name="content" class="block mt-1 w-full" :value="old('content')" required autofocus/>
                         <x-input-error :messages="$errors->get('content')" class="mt-2"/>
                     </div>
 
