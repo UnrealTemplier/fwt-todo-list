@@ -28,4 +28,9 @@ class TaskService
             'user_id' => Auth::id()
         ]);
     }
+
+    public function remove(Task $task): void
+    {
+        $task->delete();
+    }
 }

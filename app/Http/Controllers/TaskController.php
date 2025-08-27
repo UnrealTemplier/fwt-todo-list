@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskCreateRequest;
 use App\Models\Task;
 use App\Services\TaskService;
+use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
@@ -16,6 +17,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = $this->taskService->tasksForAuthenticatedUser();
+
         return view('tasks.index', compact('tasks'));
     }
 
@@ -41,6 +43,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        Gate::authorize('destroy', $task);
+
+        $this->taskService->remove($task);
+
+        return to_route('index');
     }
 }
