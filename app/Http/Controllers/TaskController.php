@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Services\TaskService;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function __construct(protected TaskService $taskService) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $tasks = $this->taskService->tasksForAuthenticatedUser();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
