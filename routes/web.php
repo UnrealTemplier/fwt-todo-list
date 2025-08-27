@@ -8,7 +8,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [TaskController::class, 'index'])->name('index');
     Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
     Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
-    Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+    Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])
+         ->can('delete', 'task')
+         ->name('tasks.destroy');
 });
 
 Route::middleware('auth')->group(function () {
