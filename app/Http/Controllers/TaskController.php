@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskCreateRequest;
 use App\Models\Task;
 use App\Services\TaskService;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -35,30 +34,6 @@ class TaskController extends Controller
     {
         $this->taskService->create($request->validated()['content']);
         return to_route('index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Task $task)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Task $task)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Task $task)
-    {
-        //
     }
 
     /**
